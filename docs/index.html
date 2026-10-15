@@ -63,27 +63,59 @@
       gap: 12px;
       flex-wrap: nowrap;
     }
+
+    /* Equal-width logo zones keep the center label truly centered. */
+    .brand-header {
+      box-sizing: border-box;
+      max-width: 1100px;
+      margin: 18px auto 22px;
+      padding: 20px 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      column-gap: 26px;
+      background: #fff;
+      border: 1px solid #e7ece9;
+      border-radius: 16px;
+      box-shadow: 0 3px 16px rgba(20, 50, 34, .055);
+    }
+    .brand-logo-slot { min-width: 0; display: flex; align-items: center; }
+    .brand-logo-slot--stch { justify-content: flex-end; }
+    .brand-logo-slot--byld { justify-content: flex-start; }
+    .brand-logo-slot img { display: block; width: auto; max-width: 100%; object-fit: contain; }
+    .brand-logo-slot--stch img { max-height: 75px; max-width: 220px; }
+    .brand-logo-slot--byld img { max-height: 75px; max-width: 220px; }
+    .brand-header-label {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; white-space: nowrap; gap: 4px;
+      color: #53645c; font-size: 11px; letter-spacing: 1.8px; font-weight: 600;
+    }
+    .brand-header-label strong { color: #263e32; font-size: 14px; letter-spacing: 1.5px; }
+    @media (max-width: 650px) {
+      .brand-header { margin: 12px 12px 18px; padding: 15px 10px; column-gap: 9px; }
+      .brand-logo-slot--stch img, .brand-logo-slot--byld img { max-height: 52px; max-width: 100%; }
+      .brand-header-label { font-size: 8px; letter-spacing: .5px; gap: 3px; }
+      .brand-header-label strong { font-size: 10px; letter-spacing: .5px; }
+    }
+    @media (max-width: 380px) {
+      .brand-header { column-gap: 5px; padding: 12px 6px; }
+      .brand-header-label { font-size: 7px; }
+      .brand-header-label strong { font-size: 9px; }
+    }
   </style>
 </head>
 
 <body style="margin: 0; font-family: sans-serif;">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    <div style="display: flex;">
-      <div class="co-brand-bar" style="width: 100%; display: flex; justify-content: center; align-items: center; margin-bottom: 12px; gap: 18px; margin-left: 0;">
-        <img
-          src="https://cdn.shopify.com/s/files/1/0663/2954/2719/files/stch-wordmark.png?v=1792100132"
-          alt="STCH"
-          style="width: 150px; max-width: 100%; height: 64px; object-fit: contain;"
-        >
-        <span style="font-weight: 500; font-size: 0.9rem; color: #444;">With Financing Powered By</span>
-        <img
-          src="https://cdn.shopify.com/s/files/1/0878/0608/3384/files/powered-by-5.webp?v=1749246609"
-          alt="BYLD Finance"
-          style="width: 170px; max-width: 100%; height: 64px; object-fit: contain;"
-        >
-      </div>
+  <!-- Balanced co-branded header -->
+  <header class="brand-header" aria-label="STCH financing powered by BYLD Finance">
+    <div class="brand-logo-slot brand-logo-slot--stch">
+      <img src="https://cdn.shopify.com/s/files/1/0663/2954/2719/files/stch-wordmark.png?v=1792100132" alt="STCH" />
     </div>
-  </div>
+    <div class="brand-header-label"><span>WITH FINANCING</span><strong>POWERED BY</strong></div>
+    <div class="brand-logo-slot brand-logo-slot--byld">
+      <img src="https://cdn.shopify.com/s/files/1/0878/0608/3384/files/byld_finance_logo.png?v=1746030247" alt="BYLD Finance" />
+    </div>
+  </header>
 
   <div class="byld-flex-wrap" style="display: flex; flex-wrap: nowrap; gap: 20px; align-items: stretch; max-width: 1100px; margin: 0 auto;">
     <!-- LEFT: Jotform -->
